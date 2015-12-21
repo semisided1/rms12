@@ -1,0 +1,66 @@
+<dom-module id="rms-teams">
+  <template>
+    <h3> Teams </h3>
+    <div class="layout vertical center-center rms-main">
+      <div>
+      <a data-route="u10" href="/u10">
+        <paper-button>U10 Fall 2015 Indoor</paper-button>
+      </a>
+      </div>
+
+    <div style="height:25px"> </div>
+    <div>
+      <a data-route="u12" href="/u12">
+        <paper-button>U12 Fall 2015 Indoor</paper-button>
+      </a>
+    </div>
+
+    <div style="height:50px"> </div>
+
+    <iron-ajax url="../../carousel/carousel.json" last-response="{{data}}" auto>
+    </iron-ajax>
+    <div class="rms-main layout vertical center">
+      <template is="dom-repeat" items="{{data}}" as="item">
+        <style is="custom-style">
+          .hcolor {
+            margin-bottom: 50px;
+            --paper-card-header-color: white;
+            --paper-card-header: {
+              line-height: 100%;
+              font-weight: bold;
+              text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+            }
+          }
+          a.cardlink:link, a.cardlink:visited {
+                  color: black;
+            }
+        </style>
+        
+        <a class="cardlink" href="[[item.link]]">
+        <paper-card class="hcolor" heading="[[item.title]]" elevation="2" image="[[item.src]]">
+          <div class="card-content">[[item.info]]</div> 
+        </paper-card>
+        </a>
+
+  </template>
+
+    </div>
+  </template>
+  <script>
+    Polymer({
+      is: 'rms-teams',
+
+      properties: {
+        foo: {
+          type: String,
+          value: 'rms-teams',
+          notify: true
+        }
+
+      },
+      attached: function() {
+        /*      this.$.pc.auto = true; */
+      }
+    });
+  </script>
+</dom-module>

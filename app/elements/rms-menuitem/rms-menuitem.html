@@ -1,0 +1,52 @@
+<dom-module id="rms-menuitem">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    
+    <a style="position:relative" data-route="[[routename]]" href="[[menuroute]]" >
+    <div class="horizontal layout">
+      <div class="vertical layout center-center">
+      <iron-icon style="width:50px" icon="[[menuicon]]" ></iron-icon>
+      </div>
+    <div class="vertical layout center-center">
+    <span style="height:100%">
+
+  [[menutext]]
+
+    </span>
+    </div>
+    <paper-ripple></paper-ripple>
+    </div>
+    </a>
+  </template>
+  <script>
+  Polymer({
+      is: 'rms-menuitem',
+      properties: {
+        routename: {
+          type: String,
+          value: 'home',
+          notify: true
+        },
+        menutext: {
+          type: String,
+          value: 'Home',
+          notify: true
+        },
+        menuroute: {
+          type: String,
+          value: '/',
+          notify: true
+        },
+        menuicon: {
+          type: String,
+          value: 'home',
+          notify: true
+        }
+      }
+    });
+  </script>
+</dom-module>

@@ -1,0 +1,117 @@
+<!doctype html>
+
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="generator" content="vim" />
+  <title>Redwater Minor Soccer</title>
+  <!-- Place favicon.ico in the `app/` directory -->
+
+  <!-- Chrome for Android theme color -->
+  <meta name="theme-color" content="#2E3AA1">
+
+  <!-- Web Application Manifest -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Tile color for Win8 -->
+  <meta name="msapplication-TileColor" content="#3372DF">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="PSK">
+  <link rel="icon" sizes="192x192" href="images/rrl.png">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Redwater Minor Soccer">
+  <link rel="apple-touch-icon" href="images/rrl.png">
+
+  <!-- Tile icon for Win8 (144x144) -->
+  <meta name="msapplication-TileImage" content="images/rrl.png">
+
+  <!-- build:js bower_components/webcomponentsjs/webcomponents-lite.min.js -->
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <!-- endbuild -->
+  <!-- will be replaced with elements/elements.vulcanized.html -->
+  <link rel="import" href="elements/elements.html">
+ <!-- endreplace-->
+ <link href='https://fonts.googleapis.com/css?family=Arbutus+Slab' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="styles/rms.css">
+</head>
+
+<body id="top" unresolved class="layout vertical center-center">
+  <span id="browser-sync-binding"></span>
+  <template is="dom-bind" id="app">
+
+    <paper-icon-button id="menubutton" icon="menu" on-click=onDataRouteClick ></paper-icon-button>
+    <app-drawer-layout id="app-drawer-layout" drawer-width="168px" responsive-width="3000px">
+
+      <div drawer id="drawer" class="vertical layout">
+
+        <div id="vertical-pad" style="height:100px" class="horizontal start-justified layout"></div>
+        <iron-iconset-svg name="rmsico" size="24">
+          <svg id="rmsball" width="24" height="24" viewBox="0 0 28.000000139077507 28" data-code="61923" data-tags="futbol-o,soccer-ball-o"><g fill="#C5CAE9" transform="scale(0.02734375 0.02734375)"><path d="M348 466.286l164-118.857 164 118.857-62.286 192h-202.857zM512 0q104 0 198.857 40.571t163.429 109.143 109.143 163.429 40.571 198.857-40.571 198.857-109.143 163.429-163.429 109.143-198.857 40.571-198.857-40.571-163.429-109.143-109.143-163.429-40.571-198.857 40.571-198.857 109.143-163.429 163.429-109.143 198.857-40.571zM865.714 771.429q85.143-116 85.143-259.429v-1.714l-58.286 50.857-137.143-128 36-184.571 76.571 6.857q-85.714-117.714-222.286-161.143l30.286 70.857-164 90.857-164-90.857 30.286-70.857q-136.571 43.429-222.286 161.143l77.143-6.857 35.429 184.571-137.143 128-58.286-50.857v1.714q0 143.429 85.143 259.429l17.143-75.429 186.286 22.857 79.429 170.286-66.286 39.429q66.857 22.286 137.143 22.286t137.143-22.286l-66.286-39.429 79.429-170.286 186.286-22.857z" /></g></svg>
+        </iron-iconset-svg>
+        <rms-menuitem menutext="Home" menuroute="/" menuicon="home" routename="home" on-click="onDataRouteClick"></rms-menuitem>
+        <rms-menuitem menutext="Announce" menuroute="/announce" menuicon="info" routename="announce" on-click="onDataRouteClick"></rms-menuitem>
+        <rms-menuitem menutext="Teams" menuroute="/teams" menuicon="rmsico:rmsball" routename="teams" on-click="onDataRouteClick"></rms-menuitem>
+        <rms-menuitem menutext="Email" menuroute="/email" menuicon="mail" routename="email" on-click="onDataRouteClick"></rms-menuitem>
+        <rms-menuitem menutext="Slack" menuroute="/slack" menuicon="thumbs-up-down" routename="slack" on-click="onDataRouteClick"></rms-menuitem>
+
+      </div>
+      <!-- div drwawer -->
+
+      <div main>
+        <app-header-layout>
+          <app-header "horizontal center layout">
+            <app-toolbar style="width:100%" class="horizontal start-justified layout">
+              <div style="width:100%" class="horizontal layout center-center">
+                <div id="title">Redwater Minor Soccer</div>
+              </div>
+            </app-toolbar>
+          </app-header>
+
+          <div  style="width:100%" >
+            <iron-pages style="width:100%"
+            attr-for-selected="data-route"
+            selected="{{route}}"
+            class="vertical layout center-center" >
+
+            <section data-route="home">
+              <rms-home></rms-home>
+            </section>
+            <section data-route="announce">
+              <rms-announce></rms-announce>
+            </section>
+            <section data-route="teams">
+              <rms-teams></rms-teams>
+            </section>
+            <section data-route="u10">
+              <u10fall2015-indoor></u10fall2015-indoor>
+            </section>
+            <section data-route="u12"  >
+              <u12fall2015-indoor></u12fall2015-indoor>
+            </section>
+            <section data-route="email"  >
+              <rms-email></rms-email>
+            </section>
+            <section data-route="slack"  >
+              <rms-slack></rms-slack>
+            </section>
+          </iron-pages>
+        </div>
+        <!-- app header layout content end -->
+      </app-header-layout>
+    </div>
+    <!-- div main of drawer -->
+
+  </app-drawer-layout>
+</template>
+<script src="app.js"></script>
+</body>
+
+</html>

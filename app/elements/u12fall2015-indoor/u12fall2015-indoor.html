@@ -1,0 +1,83 @@
+<dom-module id="u12fall2015-indoor">
+  <template>
+    <div class="rms-main vertical layout center-center">
+      <google-youtube id="player" video-id={{utoobid}} fluid="true" autoplay="0">
+      </google-youtube>
+      <h3> pick a game to view </h3>
+
+
+
+      <iron-ajax url="../../schedules/u12.txt" last-response="{{data}}" auto></iron-ajax>
+
+      <div layout vertical center>
+        <template is="dom-repeat" items="{{data}}" as="item" filter="hasvideo" observe="video">
+          <div>
+            <paper-button id="[[item.video]]" on-click="_handleClick">
+              [[item.date]], [[item.home-team]] v. [[item.away-team]]
+            </paper-button>
+          </div>
+          <div style="height:20px">
+          </div>
+        </template>
+      </div>
+
+
+      <rms-schedule dataurl="../../schedules/u12.txt" buttontext="U12 Fall 2015 Indoor Schedule">
+      </rms-schedule>
+
+
+    </div>
+  </template>
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'u12fall2015-indoor',
+
+        properties: {
+          utoobid: {
+            type: String,
+            value: 'meiVuvUOL6I?vq=hd1080',
+            observer: '_utoobidChanged'
+          }
+        },
+        hasvideo: function(e) {
+          if (typeof e.video === 'undefined') {
+            return false;
+          } else {
+            return true;
+          }
+        },
+        _utoobidChanged: function(utoobid) {
+          this.$.player.videoId = utoobid;
+        },
+        _handleClick: function(b) {
+          /*  these are steps i used to find what i need in the dom
+
+             console.log('_handleClick b: ' + b );
+          console.log('_handleClick detail: ' + detail );
+          console.log('b.srcElement: ' + b.srcElement );
+          console.log('b.srcElement.getAttribute butoobid : ' 
+          + b.srcElement.getAttribute('butoobid'));
+
+          for( var s in b.srcElement ) {
+            console.log(s);
+          }
+          */
+
+          this.utoobid = b.target.getAttribute('id');
+          this.$.player.play();
+
+        },
+
+        attached: function() {
+          console.log('u12fall20150-indoor attached');
+          // utplayer = document.getElementbyID("utplayer");
+
+          //this.onclick =  bc.bind(this);
+        }
+      });
+    })();
+  </script>
+</dom-module>
