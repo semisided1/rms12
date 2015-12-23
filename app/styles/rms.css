@@ -41,6 +41,7 @@ app-drawer-layout {
 }
 
 #drawer {
+  color: #C5CAE9;
   background: #1d0033; 
   height: 100%;
   line-height: 350%;
